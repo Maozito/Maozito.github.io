@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feliz Día de la Mujer</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+            text-align: center;
+            color: #000000;
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            position: relative;
+        }
+        .container {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            animation: fadeIn 2s;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        h1 {
+            font-size: 2.5em;
+            margin: 10px 0;
+        }
+        p {
+            font-size: 1.2em;
+            max-width: 500px;
+            margin: auto;
+        }
+        .heart {
+            font-size: 3em;
+            animation: heartbeat 1.5s infinite;
+        }
+        @keyframes heartbeat {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); }
+        }
+        .btn {
+            background: #ff4d6d;
+            color: white;
+            padding: 10px 20px;
+            font-size: 1.2em;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: 0.3s;
+        }
+        .btn:hover {
+            background: #e6004c;
+        }
+        .hidden {
+            display: none;
+        }
+        .gato {
+            position: absolute;
+            bottom: 0;
+            width: 150px;
+            height: auto;
+        }
+        /* Contenedor de las flores */
+        .flowers-container {
+            display: none;
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0%;
+            height: 0%;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Feliz Día de la Mujer, mi amor ❤️</h1>
+        <p> Mi bb es una personita muy enojona seguro cuando veas esto estaras asi todo enojona y si ya se que es por mi culpa y no, no me olvide del dia de hoy sino que hacer la parte de abajo fue mas dificil de lo que pense pero al final se logro :D , bebito no es mucho de mensajes pero agradezco mucho a mi bb por ser parte de mi vida y que a pesar de todo sigas a mi lado. 💖</p>
+        <div class="heart">❤️</div>
+        <button class="btn" onclick="mostrarFlores()">Un minidetallito para mi bb</button>
+        <p id="mensaje" class="hidden">Te amo mucho y estoy muy feliz de tenerte a mi lado y aquí mis poderosas miniflores. 💕</p>
+    </div>
+
+    <img src="imagenes/gatito1.png" alt="Gatito" class="gato">
+
+    <!-- Contenedor donde se cargarán las flores -->
+    <div class="flowers-container" id="flowersContainer"></div>
+
+    <script>
+        function mostrarFlores() {
+            const mensaje = document.getElementById("mensaje");
+            const flowersContainer = document.getElementById("flowersContainer");
+
+            // Mostrar mensaje
+            mensaje.classList.toggle("hidden");
+
+            // Cargar main2.html dentro del contenedor de flores
+            fetch("main2.html")
+                .then(response => response.text())
+                .then(html => {
+                    flowersContainer.innerHTML = html;
+                    flowersContainer.style.display = "block";
+                })
+                .catch(error => console.error("Error al cargar las flores:", error));
+        }
+    </script>
+</body>
+</html>
